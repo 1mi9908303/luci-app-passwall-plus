@@ -32,7 +32,7 @@ jobs:
         
     - name: Install UPX
       run: |
-        cd /tmp #路径过长容易报错。https://forum.openwrt.org/t/buid-package-uclibc-failed-by-using-openwrt-sdk/64377
+        cd /tmp
         latest_version=$(wget -qO- https://api.github.com/repos/upx/upx/releases/latest | grep 'tag_name' | cut -d\" -f4)
         [ -z ${latest_version} ]&&exit 127
         wget --quiet --continue --show-progress https://github.com/upx/upx/releases/download/$latest_version/upx-${latest_version:1}-amd64_linux.tar.xz
@@ -66,7 +66,7 @@ jobs:
 
     - name: Build
       run: |
-        cd /tmp
+        cd /tmp #路径过长容易报错。https://forum.openwrt.org/t/buid-package-uclibc-failed-by-using-openwrt-sdk/64377
         cores=$(cat /proc/cpuinfo|grep processor|wc -l)
         dirn=$(pwd)
         dirn1=${URL##*/}
