@@ -29,8 +29,7 @@ jobs:
         sudo -E apt-get -y install subversion build-essential libncurses5-dev zlib1g-dev gawk git ccache gettext libssl-dev xsltproc zip
         sudo -E apt-get -qq autoremove --purge
         sudo -E apt-get -qq clean
-        cd ${HOME}
-        echo "当前目录: ${HOME}"
+        cd /tmp #路径过长容易报错。https://forum.openwrt.org/t/buid-package-uclibc-failed-by-using-openwrt-sdk/64377
     
     - name: Install UPX
       run: |
