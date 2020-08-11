@@ -29,10 +29,10 @@ jobs:
         sudo -E apt-get -y install subversion build-essential libncurses5-dev zlib1g-dev gawk git ccache gettext libssl-dev xsltproc zip
         sudo -E apt-get -qq autoremove --purge
         sudo -E apt-get -qq clean
-        cd /tmp #路径过长容易报错。https://forum.openwrt.org/t/buid-package-uclibc-failed-by-using-openwrt-sdk/64377
-    
+        
     - name: Install UPX
       run: |
+        cd /tmp #路径过长容易报错。https://forum.openwrt.org/t/buid-package-uclibc-failed-by-using-openwrt-sdk/64377
         latest_version=$(wget -qO- https://api.github.com/repos/upx/upx/releases/latest | grep 'tag_name' | cut -d\" -f4)
         [ -z ${latest_version} ]&&exit 127
         wget --quiet --continue --show-progress https://github.com/upx/upx/releases/download/$latest_version/upx-${latest_version:1}-amd64_linux.tar.xz
@@ -42,6 +42,7 @@ jobs:
         
     - name: Prepare Golang
       run: |
+        cd /tmp
         #Download Latest Go
         echo "Finding latest version of Go for AMD64..."
         latest_version="$(wget -qO- https://golang.org/dl/|grep 'download downloadBox' | grep -oP '\d+\.\d+\.\d+' | head -n 1)"
@@ -55,6 +56,7 @@ jobs:
         
     - name: Prepare Toolchain
       run: |
+        cd /tmp
         #wget --no-check-certificate --quiet --continue --show-progress $(wget -qO- ${URL%/*} | grep -oP "openwrt\-sdk\-(\w|.|-)+?\.tar\.xz" | head -n 1)
         wget --no-check-certificate --quiet --continue --show-progress $URL
         [ $? -ne 0 ]&&echo "下载工具链失败!"&&exit 127
@@ -64,6 +66,7 @@ jobs:
 
     - name: Build
       run: |
+        cd /tmp
         cores=$(cat /proc/cpuinfo|grep processor|wc -l)
         dirn=$(pwd)
         dirn1=${URL##*/}
