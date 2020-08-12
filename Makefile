@@ -62,8 +62,8 @@ define Package/$(PKG_NAME)/postinst
 if [ -z "$${IPKG_INSTROOT}" ]; then
   if [ ! -x /etc/init.d/passwall ]; then
     chmod +x /etc/init.d/passwall
-    /etc/init.d/passwall enable
   fi
+  /etc/init.d/passwall enable
   rm -rf /tmp/luci*
 fi
 exit 0
