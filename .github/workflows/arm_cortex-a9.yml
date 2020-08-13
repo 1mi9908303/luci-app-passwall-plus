@@ -45,7 +45,7 @@ jobs:
         cd /tmp
         #Download Latest Go
         echo "Finding latest version of Go for AMD64..."
-        latest_version="$(wget -qO- https://golang.org/dl/|grep 'download downloadBox' | grep -oP '\d+\.\d+\.\d+' | head -n 1)"
+        latest_version="$(wget -qO- https://golang.org/dl/|grep 'download downloadBox' | grep -oP '\d+\.\d+(\.\d+)?' | head -n 1)"
         [ -z ${latest_version} ]&&exit 127
         echo "Downloading latest Go for AMD64: ${latest_version}"
         wget --quiet --continue --show-progress https://dl.google.com/go/go${latest_version}.linux-amd64.tar.gz
