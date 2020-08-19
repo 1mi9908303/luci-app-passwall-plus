@@ -1,12 +1,12 @@
 name: Compile IPK Package
 
 on:
-  push:
-    branches: [ master ]
+  #push:
+    #branches: [ master ]
   #pull_request:
     #branches: [ master ]
-  #watch:
-    #types: started
+  watch:
+    types: started
   #schedule:
     #- cron:  '0 0 28-31 * *'
 
