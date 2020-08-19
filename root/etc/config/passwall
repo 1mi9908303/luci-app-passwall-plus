@@ -2,6 +2,7 @@
 config global
 	option cache '1024'
 	list bogus '127.0.0.1/8'
+        list bogus '0.0.0.0/8'
 	list server '223.5.5.5:53'
 	list server '119.29.29.29:53'
 	list server '8.8.8.8:53'
