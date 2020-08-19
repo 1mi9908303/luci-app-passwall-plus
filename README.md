@@ -21,7 +21,7 @@
 云编译默认使用了[bcm53xx-generic](https://downloads.openwrt.org/snapshots/targets/bcm53xx/generic/)的工具链
 
 必须包含有一组国外dns像8.8.8.8，主要是针对运营商返回 127.0.0.1 的污染，如 rfa.org jav321.com 和域名黑名单等功能。  
-其它的推荐添加使用运营商的dns服务
+其它的推荐添加使用运营商的dns服务  
 目前发现raw.githubusercontent.com恶毒的返回0.0.0.0污染，已经添加到默认配置文件屏蔽。
 
 仅处理tcp流量，不会造成udp走代理出现的卡顿。目前发现谷歌市场无法下载是因为走了udp和tcp的5228端口流量。等待tcproute2支持udp代理转发解决
