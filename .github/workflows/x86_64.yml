@@ -125,7 +125,7 @@ jobs:
         echo "编译 TcpRoute2 ..."
         cd ../TcpRoute2
         go get -d -v ./...
-        env AR="${target_host}-ar" CC="${target_host}-gcc" CXX="${target_host}-gcc++" CGO_ENABLED=1 GO111MODULE=auto GOOS=${target_host##*-} GOARCH=${garch%%_*} go build -ldflags "-s -w" -o tcproute2 #需要修改
+        env AR="${target_host}-ar" CC="${target_host}-gcc" CXX="${target_host}-gcc++" CGO_ENABLED=1 GO111MODULE=auto GOOS=${target_host##*-} GOARCH=amd64 go build -ldflags "-s -w" -o tcproute2 #需要修改
         ${target_host}-readelf -d tcproute2
         file tcproute2
         upx --ultra-brute --best -v tcproute2
